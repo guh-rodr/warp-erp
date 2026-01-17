@@ -1,0 +1,41 @@
+@import 'tailwindcss';
+
+@custom-variant data-enabled (&[data-enabled~="true"]);
+
+:root {
+  --background: hsl(0 0% 100%);
+  --border: oklch(0.85 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-border: var(--border);
+}
+
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: rgb(24, 24, 24);
+  background: #f7f7f7;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  cursor: pointer;
+}
+
+.rdrMonth:first-of-type {
+  border-right: 1px solid #e5e7eb;
+  padding-right: 1em;
+}
+
+.rdrMonth:last-of-type {
+  padding-left: 1em;
+}
