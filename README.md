@@ -1,54 +1,33 @@
-# React + TypeScript + Vite
+## 💡 Sobre
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+O Warp ERP foi desenvolvido para solucionar um problema comum no comércio local: a falta de análise de dados na gestão diária. Mais do que apenas registrar vendas, o sistema permite que o lojista entenda o comportamento de compra dos clientes e tenha clareza total sobre a saúde financeira do negócio. O projeto foi estruturado especialmente para atender lojas de roupas, porém pode ser adaptado para outros tipos de estabelecimentos.
 
-Currently, two official plugins are available:
+![Banner](https://i.ibb.co/gb0TdQpf/Group-1-7.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<!--
+## 🖥️ Demonstração
 
-## Expanding the ESLint configuration
+Você pode testar o projeto já hospedado [através desse link](https://vou_colocar_ainda).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Para facilitar a autenticação, você também pode usar credenciais já pré-definidas:
+- **Email:** admin@admin.com
+- **Senha:** 12345
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+> [!NOTE]
+> A versão hospedada é apenas uma demonstração, não use credenciais reais na autenticação. Os dados do painel são compartilhados entre todos os usuários que decidirem testar a aplicação e são resetados a cada 24 horas.
+-->
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ✨ Principais funcionalides
+- **Gestão de Produtos:** Categorização de produtos e modelos.
+- **Controle de Vendas:** Listagem e registro de vendas à vista ou parceladas.
+- **CRM Básico:** Histórico de compras e preferências dos clientes.
+- **Fluxo de Caixa:** Registro financeiro de entradas e saídas.
+- **Dashboard:** Métricas essenciais para o funcionamento do comércio e tomada de decisões. 
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+## 📚 Stack
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
-```
+- [ReactJS](https://reactjs.org/)
+- [Vite](https://vitejs.dev/guide/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Phosphor Icons](https://phosphoricons.com/)
+- [Typescript](https://www.typescriptlang.org/)
