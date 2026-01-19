@@ -2,7 +2,7 @@ import { SmileySadIcon } from '@phosphor-icons/react';
 import { useMemo } from 'react';
 import { Bar, BarChart, CartesianGrid, XAxis } from 'recharts';
 import { ChartConfig, ChartContainer, ChartTooltip, ChartTooltipContent } from '../../../components/Chart';
-import { convertToDecimal } from '../../../functions/currency';
+import { formatToReal } from '../../../functions/currency';
 import { FetchStatsParams } from '../../../services/stats';
 import { StatsResponse } from '../../../types/stats';
 
@@ -56,10 +56,7 @@ export function ValuesChart({ method, chart }: Props) {
                   </span>
 
                   <div className="ml-auto flex items-baseline gap-0.5 p-0 font-mono font-medium tabular-nums text-foreground leading-none">
-                    {convertToDecimal(value as number).toLocaleString('pt-br', {
-                      style: 'currency',
-                      currency: 'BRL',
-                    })}
+                    {formatToReal(value as number)}
                   </div>
                 </>
               )}
