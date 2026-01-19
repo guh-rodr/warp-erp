@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { EyeIcon, EyeSlashIcon } from '@phosphor-icons/react';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { z } from 'zod';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
@@ -18,6 +18,7 @@ const signupFormSchema = z.object({
 });
 
 export function RegisterPage() {
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
   const { mutate, isPending } = useSignup();
@@ -30,7 +31,11 @@ export function RegisterPage() {
   });
 
   const onSubmit: SubmitHandler<SignupForm> = (data) => {
-    mutate(data);
+    mutate(data, {
+      onSuccess: () => {
+        navigate('/auth/login', { replace: true });
+      },
+    });
   };
 
   const togglePasswordVisibility = () => {
