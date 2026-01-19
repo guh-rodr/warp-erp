@@ -82,10 +82,19 @@ export function Autocomplete({
     }
   });
 
+  const getOptionInputValue = (option: Option) => {
+    const groupName = option.group !== 'default' && option.group;
+    const inputValue = groupName ? `[${groupName}] ${option.label}` : option.label;
+
+    return inputValue;
+  };
+
   const handleClickOption = (option: Option) => {
+    const inputValue = getOptionInputValue(option);
+
     onChangeOption?.(option.value);
-    setInputValue(option.label);
-    setDebouncedValue(option.label);
+    setInputValue(inputValue);
+    setDebouncedValue(inputValue);
     setShowDropdown(false);
   };
 
@@ -132,8 +141,10 @@ export function Autocomplete({
       setLastOption(selectedOption);
 
       if (document.activeElement !== inputRef.current) {
-        setInputValue(selectedOption.label);
-        setDebouncedValue(selectedOption.label);
+        const inputValue = getOptionInputValue(selectedOption);
+
+        setInputValue(inputValue);
+        setDebouncedValue(inputValue);
       }
     }
   }, [selectedOption]);
