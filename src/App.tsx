@@ -1,7 +1,7 @@
 import { keepPreviousData, QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import axios from 'axios';
 import toast, { Toaster } from 'react-hot-toast';
-import { BrowserRouter, Route, Routes } from 'react-router';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router';
 import { DialogProvider } from './contexts/dialog/DialogProvider';
 import { AuthProvider } from './contexts/session/AuthProvider';
 import { ProtectedRoute } from './pages/auth/components/ProtectedRoute';
@@ -46,6 +46,7 @@ function App() {
             <Toaster toastOptions={{ style: { maxWidth: 400 } }} />
 
             <Routes>
+              <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/auth/register" element={<RegisterPage />} />
               <Route path="/auth/login" element={<LoginPage />} />
               <Route
