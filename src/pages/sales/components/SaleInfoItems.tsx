@@ -22,7 +22,7 @@ export function SaleInfoItems({ id }: Props) {
     if (itemId === expandedItemId) {
       setExpandedItemId('');
     } else {
-      setExpandedItemId(id);
+      setExpandedItemId(itemId);
     }
   };
 
