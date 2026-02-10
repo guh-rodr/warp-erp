@@ -4,18 +4,12 @@ O Warp ERP foi desenvolvido para solucionar um problema comum no comércio local
 
 ![Banner](https://i.ibb.co/gb0TdQpf/Group-1-7.png)
 
-<!--
 ## 🖥️ Demonstração
 
-Você pode testar o projeto já hospedado [através desse link](https://vou_colocar_ainda).
-
-Para facilitar a autenticação, você também pode usar credenciais já pré-definidas:
-- **Email:** admin@admin.com
-- **Senha:** 12345
+Você pode testar o projeto já hospedado [através desse link](https://warp-erp-iota.vercel.app).
 
 > [!NOTE]
-> A versão hospedada é apenas uma demonstração, não use credenciais reais na autenticação. Os dados do painel são compartilhados entre todos os usuários que decidirem testar a aplicação e são resetados a cada 24 horas.
--->
+> A versão hospedada é apenas uma demonstração, não use credenciais reais na autenticação. Os dados do painel são compartilhados entre todos os usuários que decidirem testar a aplicação e são resetados periodicamente.
 
 ## ✨ Principais funcionalides
 - **Gestão de Produtos:** Categorização de produtos e modelos.
