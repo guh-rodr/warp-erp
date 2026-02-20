@@ -9,7 +9,7 @@ import {
   deleteManyCustomers,
   editCustomer,
   fetchCustomerOverview,
-  fetchCustomerPurchases,
+  fetchCustomerSales,
   fetchCustomersAutocomplete,
   fetchCustomerStats,
   fetchTableCustomers,
@@ -17,8 +17,8 @@ import {
 import {
   CustomerAutocomplete,
   CustomerOverview,
-  CustomerPurchaseItem,
   CustomerResponse,
+  CustomerSaleItem,
   CustomerStatsResponse,
 } from '../types/customer';
 import { useQueryParams } from './useQueryParams';
@@ -58,10 +58,10 @@ export function useFetchCustomerOverview({ id }: { id: string }) {
   });
 }
 
-export function useFetchCustomerPurchases({ id }: { id: string }) {
-  return useQuery<CustomerPurchaseItem[]>({
-    queryKey: ['customers', id, 'purchases'],
-    queryFn: () => fetchCustomerPurchases(id),
+export function useFetchCustomerSales({ id }: { id: string }) {
+  return useQuery<CustomerSaleItem[]>({
+    queryKey: ['customers', id, 'sales'],
+    queryFn: () => fetchCustomerSales(id),
   });
 }
 

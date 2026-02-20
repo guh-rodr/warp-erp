@@ -22,8 +22,8 @@ export async function fetchCustomerOverview(id: string) {
   return response.data;
 }
 
-export async function fetchCustomerPurchases(id: string) {
-  const response = await api.get(`${API_PATH}/${id}/purchases`);
+export async function fetchCustomerSales(id: string) {
+  const response = await api.get(`${API_PATH}/${id}/sales`);
   return response.data;
 }
 

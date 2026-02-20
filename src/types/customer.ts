@@ -33,7 +33,7 @@ export interface CustomerOverviewResponse {
   lastPurchaseAt: string | null;
 }
 
-export interface CustomerPurchaseItem {
+export interface CustomerSaleItem {
   id: string;
   itemCount: number;
   installmentCount: number;

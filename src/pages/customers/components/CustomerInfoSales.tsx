@@ -6,22 +6,22 @@ import { ErrorNotification } from '../../../components/ErrorNotification';
 import { LoadingNotification } from '../../../components/LoadingNotification';
 import { formatToReal } from '../../../functions/currency';
 import { formatDate } from '../../../functions/formatDate';
-import { useFetchCustomerPurchases } from '../../../hooks/useCustomers';
+import { useFetchCustomerSales } from '../../../hooks/useCustomers';
 
 interface Props {
   id: string;
 }
 
-export function CustomerInfoPurchases({ id }: Props) {
-  const [expandedPurchaseId, setExpandedPurchaseId] = useState('');
+export function CustomerInfoSales({ id }: Props) {
+  const [expandedSaleId, setExpandedSaleId] = useState('');
 
-  const { data: purchases, isLoading, isError, isSuccess } = useFetchCustomerPurchases({ id });
+  const { data: sales, isLoading, isError, isSuccess } = useFetchCustomerSales({ id });
 
-  const handleExpandPurchase = (id: string) => {
-    if (id === expandedPurchaseId) {
-      setExpandedPurchaseId('');
+  const handleExpandSale = (id: string) => {
+    if (id === expandedSaleId) {
+      setExpandedSaleId('');
     } else {
-      setExpandedPurchaseId(id);
+      setExpandedSaleId(id);
     }
   };
 
@@ -31,17 +31,16 @@ export function CustomerInfoPurchases({ id }: Props) {
 
       {isError && <ErrorNotification />}
 
-      {isSuccess && !!purchases && (
+      {isSuccess && !!sales && (
         <div className="space-y-3">
-          {purchases.length ? (
-            purchases!.map((purchase) => (
-              <Card key={purchase.id} className="p-0">
+          {sales.length ? (
+            sales!.map((sale) => (
+              <Card key={sale.id} className="p-0">
                 <div
-                  key={purchase.id}
                   className="flex text-sm p-2.5 hover:bg-neutral-100/70 transition-colors cursor-pointer"
-                  onClick={() => handleExpandPurchase(purchase.id)}
+                  onClick={() => handleExpandSale(sale.id)}
                 >
-                  {purchase.status === 'paid' ? (
+                  {sale.status === 'paid' ? (
                     <span className="bg-emerald-200/20 border border-emerald-200 rounded-lg p-2 block w-fit text-emerald-300">
                       <ShoppingCartIcon size={24} />
                     </span>
@@ -53,54 +52,54 @@ export function CustomerInfoPurchases({ id }: Props) {
 
                   <div className="flex items-center flex-1 justify-between">
                     <div className="flex flex-col justify-between ml-2">
-                      <div className="text-neutral-800 font-medium flex gap-2">{formatToReal(purchase.total)}</div>
+                      <div className="text-neutral-800 font-medium flex gap-2">{formatToReal(sale.total)}</div>
 
-                      <div className="text-neutral-500">{formatDate(purchase.purchasedAt)}</div>
+                      <div className="text-neutral-500">{formatDate(sale.purchasedAt)}</div>
                     </div>
 
                     <CaretRightIcon
                       weight="bold"
                       size={14}
-                      className={`text-neutral-500 ${expandedPurchaseId === purchase.id ? 'rotate-90' : ''} transition-all`}
+                      className={`text-neutral-500 ${expandedSaleId === sale.id ? 'rotate-90' : ''} transition-all`}
                     />
                   </div>
                 </div>
-                {expandedPurchaseId === purchase.id && (
+                {expandedSaleId === sale.id && (
                   <div className="p-2.5 pt-0">
                     <div className="grid grid-cols-3 gap-y-3 w-full border-y border-neutral-200 py-2 px-1">
                       <div className="flex flex-col text-sm text-neutral-500">
                         Qntd. Itens
-                        <span className="text-black">{purchase.itemCount}</span>
+                        <span className="text-black">{sale.itemCount}</span>
                       </div>
 
                       <div className="flex flex-col text-sm text-neutral-500">
                         Valor total
-                        <span className="text-black">{formatToReal(purchase.total)}</span>
+                        <span className="text-black">{formatToReal(sale.total)}</span>
                       </div>
 
                       <div className="flex flex-col text-sm text-neutral-500">
                         Valor recebido
-                        <span className="text-black">{formatToReal(purchase.totalReceived)}</span>
+                        <span className="text-black">{formatToReal(sale.totalReceived)}</span>
                       </div>
 
                       <div className="flex flex-col text-sm text-neutral-500">
                         Qntd. Parcelas
-                        <span className="text-black">{purchase.installmentCount}</span>
+                        <span className="text-black">{sale.installmentCount}</span>
                       </div>
 
                       <div className="flex flex-col text-sm text-neutral-500">
                         Lucro total
-                        <span className="text-black">{formatToReal(purchase.profit)}</span>
+                        <span className="text-black">{formatToReal(sale.profit)}</span>
                       </div>
 
                       <div className="flex flex-col text-sm text-neutral-500">
                         Lucro recebido
-                        <span className="text-black">{formatToReal(purchase.profitReceived)}</span>
+                        <span className="text-black">{formatToReal(sale.profitReceived)}</span>
                       </div>
                     </div>
 
                     <Link
-                      to={`/sales?id=${purchase.id}`}
+                      to={`/sales?id=${sale.id}`}
                       target="_blank"
                       className="flex w-fit items-center gap-1 mt-2 text-sm text-emerald-500 underline underline-offset-2 hover:opacity-70 transition-all"
                     >

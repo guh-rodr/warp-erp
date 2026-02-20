@@ -18,7 +18,7 @@ export function SaleInfoItems({ id }: Props) {
 
   const [expandedItemId, setExpandedItemId] = useState('');
 
-  const handleExpandPurchase = (itemId: string) => {
+  const handleExpandSale = (itemId: string) => {
     if (itemId === expandedItemId) {
       setExpandedItemId('');
     } else {
@@ -42,7 +42,7 @@ export function SaleInfoItems({ id }: Props) {
               <Card key={item.id} className="p-0">
                 <div
                   className="flex text-sm p-2.5 hover:bg-neutral-100/70 transition-colors cursor-pointer"
-                  onClick={() => handleExpandPurchase(item.id!)}
+                  onClick={() => handleExpandSale(item.id!)}
                 >
                   <span className="bg-gray-200/20 border border-gray-200 rounded-lg p-2 block w-fit text-gray-300">
                     <TShirtIcon size={24} />
