@@ -2,10 +2,13 @@ import { PlusIcon } from '@phosphor-icons/react';
 import { Button } from '../../components/Button';
 import { DashboardLayout } from '../../components/DashboardLayout';
 import { useDialog } from '../../contexts/dialog/dialog-context';
+import { usePageTitle } from '../../hooks/usePageTitle';
 import { CategoriesList } from './components/CategoriesList';
 import { CategoryForm } from './components/CategoryForm';
 
 export function CategoriesPage() {
+  usePageTitle('Categorias e Modelos');
+
   const { openDialog } = useDialog();
 
   const openCategoryForm = () => {

@@ -8,6 +8,7 @@ import { PageActions } from '../../components/PageActions/PageActions';
 import { SearchBar } from '../../components/SearchBar';
 import { useDialog } from '../../contexts/dialog/dialog-context';
 import { useFilter } from '../../hooks/useFilter';
+import { usePageTitle } from '../../hooks/usePageTitle';
 import { FilterFieldProps } from '../../types/filters';
 import { SaleDeleteModal } from './components/SaleDeleteModal';
 import { SaleFormDrawer } from './components/SaleForm/SaleForm';
@@ -51,6 +52,8 @@ const SALES_FILTER_DEFINITIONS: FilterFieldProps[] = [
 ];
 
 export function SalesPage() {
+  usePageTitle('Vendas');
+
   const [selectedRows, setSelectedRows] = useState({});
 
   const { openDialog } = useDialog();

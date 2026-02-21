@@ -1,17 +1,18 @@
+import { PlusIcon } from '@phosphor-icons/react';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { Button } from '../../components/Button';
 import { DashboardLayout } from '../../components/DashboardLayout';
+import { Filter } from '../../components/Filter/Filter';
 import { PageActions } from '../../components/PageActions/PageActions';
+import { SearchBar } from '../../components/SearchBar';
 import { useDialog } from '../../contexts/dialog/dialog-context';
 import { useFilter } from '../../hooks/useFilter';
+import { usePageTitle } from '../../hooks/usePageTitle';
 import { FilterFieldProps } from '../../types/filters';
 import { CustomerDeleteModal } from './components/CustomerDeleteModal';
 import { CustomerFormModal } from './components/CustomerFormModal';
 import { CustomersTable } from './components/CustomersTable';
-import { Button } from '../../components/Button';
-import { PlusIcon } from '@phosphor-icons/react';
-import { SearchBar } from '../../components/SearchBar';
-import { Filter } from '../../components/Filter/Filter';
 
 const CUSTOMERS_FILTER_FIELDS: FilterFieldProps[] = [
   {
@@ -42,6 +43,8 @@ const CUSTOMERS_FILTER_FIELDS: FilterFieldProps[] = [
 ];
 
 export function CustomersPage() {
+  usePageTitle('Clientes');
+
   const [selectedRows, setSelectedRows] = useState({});
 
   const { openDialog } = useDialog();

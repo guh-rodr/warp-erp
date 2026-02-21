@@ -1,11 +1,14 @@
 import { IconProps } from '@phosphor-icons/react';
 import { Link } from 'react-router';
 import { useAuth } from '../../contexts/session/auth-context';
+import { usePageTitle } from '../../hooks/usePageTitle';
 import { MODULES } from '../../utils/modules';
 
 const iconProps: IconProps = { weight: 'bold', size: 18 };
 
 export function HomePage() {
+  usePageTitle('Inicio');
+
   const { user } = useAuth();
 
   return (

@@ -8,6 +8,7 @@ import { PageActions } from '../../components/PageActions/PageActions';
 import { SearchBar } from '../../components/SearchBar';
 import { useDialog } from '../../contexts/dialog/dialog-context';
 import { useFilter } from '../../hooks/useFilter';
+import { usePageTitle } from '../../hooks/usePageTitle';
 import { FilterFieldProps } from '../../types/filters';
 import { TRANSACTION_CATEGORIES } from '../../utils/transactionCategories';
 import { CashflowTable } from './components/CashflowTable';
@@ -53,6 +54,8 @@ const CASHFLOW_FILTER_FIELDS: FilterFieldProps[] = [
 ];
 
 export function CashflowPage() {
+  usePageTitle('Fluxo de Caixa');
+
   const [selectedRows, setSelectedRows] = useState({});
 
   const { openDialog } = useDialog();

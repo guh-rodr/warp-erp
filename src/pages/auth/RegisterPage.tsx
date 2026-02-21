@@ -7,6 +7,7 @@ import { z } from 'zod';
 import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { Label } from '../../components/Label';
+import { usePageTitle } from '../../hooks/usePageTitle';
 import { useSignup } from '../../hooks/useSignup';
 import { SignupForm } from '../../types/auth';
 import { ErrorMessage } from './components/ErrorMessage';
@@ -18,6 +19,8 @@ const signupFormSchema = z.object({
 });
 
 export function RegisterPage() {
+  usePageTitle('Registrar');
+
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 

@@ -1,6 +1,7 @@
 import { DashboardLayout } from '../../components/DashboardLayout';
 import { ErrorNotification } from '../../components/ErrorNotification';
 import { QueryTabs } from '../../components/QueryTabs';
+import { usePageTitle } from '../../hooks/usePageTitle';
 import { useFetchStats } from '../../hooks/useStats';
 import { useStatsParams } from '../../hooks/useStatsParams';
 import { CardsStats } from './components/CardsStats';
@@ -10,6 +11,8 @@ import { TopCategoriesChart } from './components/TopCategoriesChart';
 import { ValuesChart } from './components/ValuesChart';
 
 export function StatsPage() {
+  usePageTitle('Estatísticas');
+
   const { method, ...params } = useStatsParams();
   const { data, isLoading, isError } = useFetchStats({
     method,

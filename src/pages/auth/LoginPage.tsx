@@ -8,6 +8,7 @@ import { Button } from '../../components/Button';
 import { Input } from '../../components/Input';
 import { Label } from '../../components/Label';
 import { useAuth } from '../../contexts/session/auth-context';
+import { usePageTitle } from '../../hooks/usePageTitle';
 import { SigninForm } from '../../types/auth';
 import { ErrorMessage } from './components/ErrorMessage';
 
@@ -17,6 +18,8 @@ const signinFormSchema = z.object({
 });
 
 export function LoginPage() {
+  usePageTitle('Entrar');
+
   const { signIn, isLoading } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
 
