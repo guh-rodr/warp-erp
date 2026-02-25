@@ -12,16 +12,16 @@ export function HomePage() {
   const { user } = useAuth();
 
   return (
-    <div className="w-screen h-screen flex flex-col gap-24 items-center justify-center text-center">
-      <h1 className="w-full font-semibold text-4xl text-neutral-800">
-        Seja bem-vindo {user ? `, ${user.name}` : ''} 👋
+    <div className="min-h-screen p-6 flex flex-col items-center justify-center text-center">
+      <h1 className="w-full pt-12 pb-18 font-semibold text-3xl sm:text-4xl text-neutral-800">
+        Seja bem-vindo{user ? `, ${user.name}` : ''} 👋
       </h1>
 
-      <div className="flex flex-wrap max-w-2/3 justify-center gap-5">
+      <div className="flex items-center flex-wrap justify-center lg:max-w-2/3 gap-5">
         {MODULES.map(({ icon: Icon, ...module }) => {
           return (
-            <Link key={module.key} to={module.href}>
-              <div className="w-[320px] h-full bg-white pt-12 p-6 text-left shadow-sm border border-neutral-50 rounded-xl space-y-3 relative group overflow-hidden hover:-translate-y-2 transition-transform">
+            <Link key={module.key} to={module.href} className="w-full md:max-w-[320px]">
+              <div className="bg-white pt-12 p-6 text-left shadow-sm border border-neutral-50 rounded-xl space-y-3 relative group overflow-hidden hover:-translate-y-2 transition-transform">
                 <span className="block w-fit text-neutral-600 bg-neutral-100 border border-neutral-300 rounded-full p-2 group-hover:bg-emerald-200/30 group-hover:text-emerald-600 group-hover:border-emerald-300 transition-colors">
                   <Icon {...iconProps} />
                 </span>
