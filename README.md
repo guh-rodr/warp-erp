@@ -1,4 +1,4 @@
-<img width="426" height="200" alt="banner" src="https://github.com/user-attachments/assets/ca3d960b-67db-4486-b6a2-1c32ae62a7ed" />
+<img width="359" height="160" alt="trama-banner" src="https://github.com/user-attachments/assets/cf85f7ea-2933-403e-b727-a0befd58ad48" />
 
 <br>
 <br>
