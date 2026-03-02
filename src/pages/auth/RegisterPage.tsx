@@ -10,6 +10,7 @@ import { Label } from '../../components/Label';
 import { usePageTitle } from '../../hooks/usePageTitle';
 import { useSignup } from '../../hooks/useSignup';
 import { SignupForm } from '../../types/auth';
+import { AuthCard } from './components/AuthCard';
 import { ErrorMessage } from './components/ErrorMessage';
 
 const signupFormSchema = z.object({
@@ -46,58 +47,53 @@ export function RegisterPage() {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center">
+    <AuthCard title="Entre em sua conta de teste" description="Essa é uma versão de demonstração, não use dados reais">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="p-6 space-y-4 shadow-md rounded-3xl bg-white max-w-sm">
-          <h1 className="font-semibold text-xl text-center">Crie uma conta de teste</h1>
-          <p className="text-neutral-500 text-center px-4">Essa é uma versão de demonstração, não use dados reais.</p>
+        <div className="mt-12 space-y-6">
+          <div>
+            <Label className="text-sm">Nome</Label>
+            <Input {...register('name', { required: true })} />
 
-          <div className="mt-12 space-y-6">
-            <div>
-              <Label className="text-sm">Nome</Label>
-              <Input {...register('name', { required: true })} />
-
-              {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
-            </div>
-
-            <div>
-              <Label className="text-sm">Email</Label>
-              <Input {...register('email', { required: true })} />
-
-              {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
-            </div>
-
-            <div>
-              <Label className="text-sm">Senha</Label>
-
-              <div className="relative">
-                <Input type={showPassword ? 'text' : 'password'} {...register('password', { required: true })} />
-
-                <button
-                  type="button"
-                  onClick={togglePasswordVisibility}
-                  className="absolute right-0 mt-[5px] mr-1.5 rounded-lg hover:bg-neutral-100 p-2 text-neutral-700 transition-colors"
-                >
-                  {showPassword ? <EyeSlashIcon /> : <EyeIcon />}
-                </button>
-              </div>
-
-              {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
-
-              <Link
-                to="/auth/login"
-                className="text-sm text-emerald-500 underline underline-offset-2 mt-2 w-fit block hover:opacity-50 transition-all"
-              >
-                Já tenho uma conta
-              </Link>
-            </div>
-
-            <Button type="submit" isLoading={isPending} className="w-full">
-              Registrar
-            </Button>
+            {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
           </div>
+
+          <div>
+            <Label className="text-sm">Email</Label>
+            <Input {...register('email', { required: true })} />
+
+            {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
+          </div>
+
+          <div>
+            <Label className="text-sm">Senha</Label>
+
+            <div className="relative">
+              <Input type={showPassword ? 'text' : 'password'} {...register('password', { required: true })} />
+
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="absolute right-0 mt-[5px] mr-1.5 rounded-lg hover:bg-neutral-100 p-2 text-neutral-700 transition-colors"
+              >
+                {showPassword ? <EyeSlashIcon /> : <EyeIcon />}
+              </button>
+            </div>
+
+            {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
+
+            <Link
+              to="/auth/login"
+              className="text-sm text-emerald-500 underline underline-offset-2 mt-2 w-fit block hover:opacity-50 transition-all"
+            >
+              Já tenho uma conta
+            </Link>
+          </div>
+
+          <Button type="submit" isLoading={isPending} className="w-full">
+            Registrar
+          </Button>
         </div>
       </form>
-    </div>
+    </AuthCard>
   );
 }
