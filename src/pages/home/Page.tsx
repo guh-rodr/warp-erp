@@ -13,6 +13,8 @@ export function HomePage() {
 
   return (
     <div className="min-h-screen p-6 flex flex-col items-center justify-center text-center">
+      <img width={48} height={48} alt="trama-icon" src="/trama-icon.png" className="mx-auto" />
+
       <h1 className="w-full pt-12 pb-18 font-semibold text-3xl sm:text-4xl text-neutral-800">
         Seja bem-vindo{user ? `, ${user.name}` : ''} 👋
       </h1>
