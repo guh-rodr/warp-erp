@@ -11,10 +11,10 @@ import {
 } from '../services/category';
 import { CategoryItem } from '../types/category';
 
-export function useFetchCategories({ fetchModels }: FetchCategoriesParams) {
+export function useFetchCategories({ canFetchModels }: FetchCategoriesParams) {
   return useQuery<CategoryItem[]>({
     queryKey: ['categories'],
-    queryFn: () => fetchCategories({ fetchModels }),
+    queryFn: () => fetchCategories({ fetchOnMount: true, canFetchModels }),
   });
 }
 
@@ -34,19 +34,19 @@ export function useCreateCategory() {
 }
 
 export function useCategoriesAutocomplete(props: FetchCategoriesParams) {
-  const [enabled, setEnabled] = useState(false);
+  const [enabled, setEnabled] = useState(props.fetchOnMount ?? true);
 
-  const enableFetch = () => {
+  const fetchData = () => {
     setEnabled(true);
   };
 
   const query = useQuery<CategoryItem[]>({
-    queryKey: ['categories', 'autocomplete', props],
+    queryKey: ['categories', 'autocomplete', { search: props.search, canFetchModels: props.canFetchModels }],
     queryFn: () => fetchCategoriesAutocomplete(props),
     enabled,
   });
 
-  return { ...query, enableFetch };
+  return { ...query, fetchData };
 }
 
 export function useEditCategory() {

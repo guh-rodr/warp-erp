@@ -4,17 +4,18 @@ import { CreateCategoryForm, EditCategoryForm } from '../types/category';
 const API_PATH = '/categories';
 
 export interface FetchCategoriesParams {
-  fetchModels?: boolean;
+  fetchOnMount: boolean;
+  canFetchModels: boolean;
   search?: string;
 }
 
-export async function fetchCategories({ fetchModels }: FetchCategoriesParams) {
-  const response = await api.get(`${API_PATH}?fetchModels=${fetchModels}`);
+export async function fetchCategories({ canFetchModels }: FetchCategoriesParams) {
+  const response = await api.get(`${API_PATH}?fetchModels=${canFetchModels}`);
   return response.data;
 }
 
-export async function fetchCategoriesAutocomplete({ search, fetchModels }: FetchCategoriesParams) {
-  const response = await api.get(`${API_PATH}/autocomplete`, { params: { search, fetchModels } });
+export async function fetchCategoriesAutocomplete({ search, canFetchModels }: FetchCategoriesParams) {
+  const response = await api.get(`${API_PATH}/autocomplete`, { params: { search, fetchModels: canFetchModels } });
   return response.data;
 }
 

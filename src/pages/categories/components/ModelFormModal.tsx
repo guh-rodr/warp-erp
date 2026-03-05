@@ -1,12 +1,12 @@
 import { PlusIcon, TagIcon } from '@phosphor-icons/react';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Autocomplete } from '../../../components/Autocomplete/Autocomplete';
 import { Button } from '../../../components/Button';
+import { CurrencyInput } from '../../../components/CurrencyInput';
 import { Input } from '../../../components/Input';
 import { Label } from '../../../components/Label';
-import { CurrencyInput } from '../../../components/CurrencyInput';
 import { useDialog } from '../../../contexts/dialog/dialog-context';
 import { convertToDecimal } from '../../../functions/currency';
 import { useCategoriesAutocomplete } from '../../../hooks/useCategories';
@@ -50,18 +50,11 @@ export function ModelFormModal({ defaultCategory, defaultModel, onCreate }: Prop
     defaultValues,
   });
 
-  const {
-    data: categories,
-    status,
-    enableFetch,
-  } = useCategoriesAutocomplete({
+  const { data: categories, status } = useCategoriesAutocomplete({
+    fetchOnMount: true,
     search: categorySearch,
-    fetchModels: false,
+    canFetchModels: false,
   });
-
-  useEffect(() => {
-    enableFetch();
-  }, []);
 
   const handleAddCategory = () => setValue('category', categorySearch);
 

@@ -23,7 +23,7 @@ export function useCreateModel() {
         // se for criação de categoria, cria tanto a categoria quando o modelo
 
         queryClient.setQueriesData(
-          { queryKey: ['categories', 'autocomplete', { fetchModels: true }] },
+          { queryKey: ['categories', 'autocomplete', { canFetchModels: true }] },
           (oldData: CategoryItem[] | undefined) => {
             if (!oldData) return oldData;
 
@@ -36,7 +36,7 @@ export function useCreateModel() {
         // se for apenas criação de modelo, inclui ele na categoria selecionada
 
         queryClient.setQueriesData(
-          { queryKey: ['categories', 'autocomplete', { fetchModels: true }] },
+          { queryKey: ['categories', 'autocomplete', { canFetchModels: true }] },
           (oldData: CategoryItem[] | undefined) => {
             if (!oldData) return oldData;
 

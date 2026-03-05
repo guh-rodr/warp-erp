@@ -29,10 +29,11 @@ export function ItemsFields({ control, setValue, getValues }: Props) {
   const {
     data: categories,
     status,
-    enableFetch,
+    fetchData,
   } = useCategoriesAutocomplete({
+    fetchOnMount: false,
     search: categorySearch,
-    fetchModels: true,
+    canFetchModels: true,
   });
 
   const sorted = categories?.sort((a, b) => {
@@ -96,7 +97,7 @@ export function ItemsFields({ control, setValue, getValues }: Props) {
                     value={field.value}
                     placeholder="Escolha o modelo"
                     status={status}
-                    onOpen={enableFetch}
+                    onOpen={fetchData}
                     onChangeInput={setCategorySearch}
                     onChangeOption={(value) => {
                       field.onChange(value);

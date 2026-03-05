@@ -14,7 +14,7 @@ export function CategoriesList() {
     }
   };
 
-  const { data: categories } = useFetchCategories({ fetchModels: true });
+  const { data: categories } = useFetchCategories({ fetchOnMount: true, canFetchModels: true });
 
   return (
     <div className="space-y-3">
