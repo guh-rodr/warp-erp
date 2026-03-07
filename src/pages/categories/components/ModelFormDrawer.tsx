@@ -20,7 +20,7 @@ interface Props {
   onCreate?: (newModel: ModelItem) => void;
 }
 
-export function ModelFormModal({ defaultCategory, defaultModel, onCreate }: Props) {
+export function ModelFormDrawer({ defaultCategory, defaultModel, onCreate }: Props) {
   const isEditMode = !!defaultModel;
   const [categorySearch, setCategorySearch] = useState('');
 

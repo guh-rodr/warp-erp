@@ -9,7 +9,7 @@ import { ModelItem, ModelItemForm } from '../../../types/model';
 import { CategoryDeleteModal } from './CategoryDeleteModal';
 import { ModelCard } from './ModelCard';
 import { ModelDeleteModal } from './ModelDeleteModal';
-import { ModelFormModal } from './ModelFormModal';
+import { ModelFormDrawer } from './ModelFormDrawer';
 
 interface Props {
   category: CategoryItem;
@@ -50,9 +50,9 @@ export function CategoryAccordion({
 
   const handleAddModel = () => {
     openDialog({
-      type: 'modal',
+      type: 'drawer',
       title: 'Adicionar novo modelo',
-      content: <ModelFormModal defaultCategory={category} />,
+      content: <ModelFormDrawer defaultCategory={category} />,
     });
   };
 
@@ -94,9 +94,9 @@ export function CategoryAccordion({
     };
 
     openDialog({
-      type: 'modal',
+      type: 'drawer',
       title: 'Editar modelo',
-      content: <ModelFormModal defaultCategory={category} defaultModel={defaultModel} />,
+      content: <ModelFormDrawer defaultCategory={category} defaultModel={defaultModel} />,
     });
   };
 

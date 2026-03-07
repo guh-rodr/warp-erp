@@ -11,7 +11,7 @@ import { SaleForm } from '../../../../types/sale';
 import { COLORS } from '../../../../utils/colors';
 import { PRINTS } from '../../../../utils/prints';
 import { SIZES } from '../../../../utils/sizes';
-import { ModelFormModal } from '../../../categories/components/ModelFormModal';
+import { ModelFormDrawer } from '../../../categories/components/ModelFormDrawer';
 
 interface Props {
   control: Control<SaleForm>;
@@ -48,10 +48,10 @@ export function ItemsFields({ control, setValue, getValues }: Props) {
 
   const handleAddProduct = (index: number) => {
     openDialog({
-      type: 'modal',
+      type: 'drawer',
       title: 'Adicionar novo produto',
       content: (
-        <ModelFormModal
+        <ModelFormDrawer
           onCreate={(newModel) => {
             setValue(`items.${index}.modelId`, newModel.id);
             applyModelPricesByIdx(index, newModel);
